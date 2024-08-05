@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="justify-content-center mt-4">
+    <h4>Upload Image here</h4>
+</div>
+<form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Choose an image file:</label>
+        <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="language">Select Language:</label>
+        <select class="form-control" id="language" name="language" required>
+            <option value="eng">English</option>
+            <option value="ell">Greek</option>
+            <option value="ara">Arabic</option>
+            <option value="rus">Russian</option>
+            <option value="kor">Korean</option>
+            <option value="jpn">Japanese</option>
+            <option value="chi_tra">Traditional Chinese</option>
+            <option value="chi_sim">Simplified Chinese</option>
+            <option value="por">Portuguese</option>
+            <option value="ita">Italian</option>
+            <option value="tel">Telugu</option>
+            <option value="deu">German</option>
+            <option value="fra">French</option>
+            <option value="spa_old">Old Spanish</option>
+            <option value="spa">Spanish</option>
+            <option value="hin">Hindi</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Upload</button>
+</form>
+{% endblock %}
