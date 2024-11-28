@@ -5,13 +5,20 @@ from googletrans import Translator
 translator = Translator()
 
 def detect_language(text):
-    # get language used
-    detected_lang_data = translator.detect(text)
-    # print(lang)
-    lang = detected_lang_data.lang
-    conf = detected_lang_data.confidence
+    try:
+        detected_lang_data = translator.detect(text)
+        
+        # Ensure the response is not None or invalid
+        if detected_lang_data is None or not detected_lang_data.lang:
+            raise ValueError("Unable to detect language.")
 
-    return lang, conf
+        lang = detected_lang_data.lang
+        confidence = detected_lang_data.confidence
+        
+        return lang, confidence
+    except Exception as e:
+        print(f"Error detecting language: {e}")
+        return None, 0.0
 
 def translate_text(text, dest):
     translated_text = translator.translate(text, dest=dest)
